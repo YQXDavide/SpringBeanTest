@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 通过无参构造函数创建bean实例 
+<bean id="customerService" class="com.yang.service.impl.CustomerServiceImpl"></bean>
+<bean id="customerDao" class="com.yang.dao.impl.CustomerDaoImpl"></bean>   
+ 通过静态工厂创建bean的实例 
+<bean id="staticFactory" class="com.yang.factory.StaticFactory" factory-method="getCustomerService"></bean>
+ 通过实例工厂创建bean的实例 
+<bean id="instanceFactory" class="com.yang.factory.InstanceFactory"></bean>
+<bean id="getCustomerService" factory-bean="instanceFactory" factory-method="getCustomerService"></bean>
+
+ 通过构造函数进行数据注入 
+<bean id="customerService" class="com.yang.service.impl.CustomerServiceImpl">
+	<constructor-arg name="customerDao" ref="customerDao"></constructor-arg>
+</bean>
+
+<bean id="customerDao" class="com.yang.dao.impl.CustomerDaoImpl"></bean>
+-->
+<bean id="customerService" class="com.yang.service.impl.CustomerServiceImpl">
+	<property name="name" value="小明"></property>
+	<property name="age" value="25"></property>
+	<property name="date" ref="now"></property>
+	<property name="myString">
+		<array>
+			<value>asdfas</value>
+			<value>asdfs</value>
+			<value>asds</value>
+		</array>
+	</property>
+	<property name="myList">
+		<list>
+			<value>wesdf</value>
+			<value>asdfas</value>
+			<value>assdffas</value>
+		</list>
+	</property>
+	<property name="mySet">
+		<set>
+			<value>asdfew</value>
+			<value>asdfew</value>
+			<value>assdfew</value>
+		</set>
+	</property>
+	<property name="myMap">
+		<map>
+			<entry key="1231" value="sdfa"></entry>
+			<entry key="43543">
+				<value>sdfas</value>
+			</entry>
+		</map>
+	</property>
+	<property name="myProp">
+		<props>
+			<prop key="sadfa">fsad</prop>
+			<prop key="sadfa">fd</prop>
+		</props>
+	</property>
+	<property name="customerDao" ref="customerDao"></property>
+</bean>
+<bean id="customerDao" class="com.yang.dao.impl.CustomerDaoImpl"></bean>
+<bean id="now" class="java.util.Date"></bean>
+</beans>
